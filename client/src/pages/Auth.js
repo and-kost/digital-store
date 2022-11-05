@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Container, Form, Row} from 'react-bootstrap';
+import {Button, Card, Container, Form} from 'react-bootstrap';
 import {LOGIN_ROUTE, REGISTRATION_ROUTE} from '../utils/constants';
 import {NavLink, useLocation} from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const Auth = () => {
     const isLogin = location.pathname === LOGIN_ROUTE
     return (
         <Container className='d-flex justify-content-center align-items-center'>
-            <Card style={{width: 600}} className='p-5'>
+            <Card style={{width: 600}} className='p-5 mt-5'>
                 <h2 className='m-aut'>{isLogin ? 'Authorization' : 'Registration'}</h2>
                 <Form className='d-flex flex-column'>
                     <Form.Control
