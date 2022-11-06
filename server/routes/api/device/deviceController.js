@@ -13,9 +13,9 @@ class DeviceController {
 
             const device = await Device.create({
                 name,
-                price,
-                brandId,
-                typeId,
+                price: Number(price),
+                brandId: Number(brandId),
+                typeId: Number(typeId),
                 image: fileName
             })
 
@@ -23,7 +23,7 @@ class DeviceController {
                 info = JSON.parse(info)
                 info.forEach(field => {
                     DeviceInfo.create({
-                        title: field.name,
+                        title: field.title,
                         description: field.description,
                         deviceId: device.id
                     })

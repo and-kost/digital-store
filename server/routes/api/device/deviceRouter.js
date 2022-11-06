@@ -3,7 +3,7 @@ const router = new Router()
 const DeviceController = require('./deviceController')
 const checkRole = require('../../../middlewares/checkRole')
 
-router.post('/', checkRole('admin'), DeviceController.create)
+router.post('/', checkRole('ADMIN'), DeviceController.create)
 router.get('/', DeviceController.getAll)
 router.get('/:id', DeviceController.getOne)
 

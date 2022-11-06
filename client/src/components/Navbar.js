@@ -3,9 +3,11 @@ import {Context} from '../index';
 import {Container, Nav, Navbar, NavLink} from 'react-bootstrap';
 import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from '../utils/constants';
 import {observer} from 'mobx-react-lite';
+import {useNavigate} from 'react-router-dom';
 
 const NavBar = observer(() => {
     const {user} = useContext(Context)
+    const history = useNavigate()
 
     const logout = () => {
         user.setUser({})
@@ -18,7 +20,7 @@ const NavBar = observer(() => {
                 <NavLink style={{color: 'white'}} to={SHOP_ROUTE}>Digital Store</NavLink>
                 { user.isAuth ?
                     <Nav className="ml-auto">
-                        <Nav.Link href={ADMIN_ROUTE}>Admin Panel</Nav.Link>
+                        <Nav.Link onClick={() => history(ADMIN_ROUTE)}>Admin Panel</Nav.Link>
                         <Nav.Link href={LOGIN_ROUTE} onClick={() => logout()}>Logout</Nav.Link>
                     </Nav>
                     :
