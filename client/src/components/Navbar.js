@@ -6,6 +6,12 @@ import {observer} from 'mobx-react-lite';
 
 const NavBar = observer(() => {
     const {user} = useContext(Context)
+
+    const logout = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -13,11 +19,11 @@ const NavBar = observer(() => {
                 { user.isAuth ?
                     <Nav className="ml-auto">
                         <Nav.Link href={ADMIN_ROUTE}>Admin Panel</Nav.Link>
-                        <Nav.Link href={LOGIN_ROUTE}>Logout</Nav.Link>
+                        <Nav.Link href={LOGIN_ROUTE} onClick={() => logout()}>Logout</Nav.Link>
                     </Nav>
                     :
                     <Nav className="ml-auto">
-                        <Nav.Link href="#home" onClick={() => user.setIsAuth(true)}>Sign In</Nav.Link>
+                        <Nav.Link href={LOGIN_ROUTE}>Sign In</Nav.Link>
                     </Nav>
                 }
             </Container>

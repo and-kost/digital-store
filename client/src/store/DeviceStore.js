@@ -2,23 +2,9 @@ import {makeAutoObservable} from 'mobx';
 
 export default class DeviceStore {
     constructor() {
-        this._types = [
-            {id: 1, name: 'phones'},
-            {id: 2, name: 'TVs'}
-        ]
-        this._brands = [
-            {id: 1, name: 'Apple'},
-            {id: 2, name: 'Samsung'}
-        ]
-        this._devices = [
-            {id: 1, name: 'iPhone 4', price: 500, rating: 5, image: 'https://media.istockphoto.com/id/1364620309/photo/iphone-13-pro.jpg?s=1024x1024&w=is&k=20&c=jFnbznulZpNyTXl9I-tqZAmMJzs5MUrNDp5EIdoB7AE='},
-            {id: 2, name: 'iPhone 5', price: 500, rating: 5, image: 'https://media.istockphoto.com/id/1364620309/photo/iphone-13-pro.jpg?s=1024x1024&w=is&k=20&c=jFnbznulZpNyTXl9I-tqZAmMJzs5MUrNDp5EIdoB7AE='},
-            {id: 2, name: 'iPhone 5', price: 500, rating: 5, image: 'https://media.istockphoto.com/id/1364620309/photo/iphone-13-pro.jpg?s=1024x1024&w=is&k=20&c=jFnbznulZpNyTXl9I-tqZAmMJzs5MUrNDp5EIdoB7AE='},
-            {id: 2, name: 'iPhone 5', price: 500, rating: 5, image: 'https://media.istockphoto.com/id/1364620309/photo/iphone-13-pro.jpg?s=1024x1024&w=is&k=20&c=jFnbznulZpNyTXl9I-tqZAmMJzs5MUrNDp5EIdoB7AE='},
-            {id: 2, name: 'iPhone 5', price: 500, rating: 5, image: 'https://media.istockphoto.com/id/1364620309/photo/iphone-13-pro.jpg?s=1024x1024&w=is&k=20&c=jFnbznulZpNyTXl9I-tqZAmMJzs5MUrNDp5EIdoB7AE='},
-            {id: 2, name: 'iPhone 5', price: 500, rating: 5, image: 'https://media.istockphoto.com/id/1364620309/photo/iphone-13-pro.jpg?s=1024x1024&w=is&k=20&c=jFnbznulZpNyTXl9I-tqZAmMJzs5MUrNDp5EIdoB7AE='},
-            {id: 2, name: 'iPhone 5', price: 500, rating: 5, image: 'https://media.istockphoto.com/id/1364620309/photo/iphone-13-pro.jpg?s=1024x1024&w=is&k=20&c=jFnbznulZpNyTXl9I-tqZAmMJzs5MUrNDp5EIdoB7AE='},
-        ]
+        this._types = []
+        this._brands = []
+        this._devices = []
         this._selectedType = {}
         this._selectedBrand = {}
         makeAutoObservable(this)
@@ -33,7 +19,7 @@ export default class DeviceStore {
     }
 
     setDevices(devices) {
-        this.devices = devices
+        this._devices = devices
     }
 
     get types() {

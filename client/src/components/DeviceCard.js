@@ -10,7 +10,7 @@ const DeviceCard = observer(({device}) => {
     return (
         <Col md={3} onClick={() => history(`${DEVICE_ROUTE}/:${device.id}`)}>
             <Card style={{width: 150, cursor: 'pointer'}} border={'light'}>
-                <Image width={150} height={150} src={device.image}/>
+                <Image width={150} height={150} src={process.env.REACT_APP_API + device.image}/>
                 <div className='d-flex mt-1 text-black-50 justify-content-between align-items-center'>
                     <div>Apple</div>
                     <div className='d-flex align-items-center'>
