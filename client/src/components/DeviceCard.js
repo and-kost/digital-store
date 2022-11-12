@@ -12,7 +12,7 @@ const DeviceCard = observer(({device}) => {
             <Card style={{width: 150, cursor: 'pointer'}} border={'light'}>
                 <Image width={150} height={150} src={process.env.REACT_APP_API + device.image}/>
                 <div className='d-flex mt-1 text-black-50 justify-content-between align-items-center'>
-                    <div>{device.brand}</div>
+                    <div>{device.brand.name}</div>
                     <div className='d-flex align-items-center'>
                         <div>{device.rating}</div>
                         <Image width={15} height={15} src={star}/>

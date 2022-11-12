@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const {Device, DeviceInfo} = require('../../../models/models');
+const {Device, DeviceInfo, Brand} = require('../../../models/models');
 const ApiError = require('../../../utils/errors/ApiError');
 
 class DeviceController {
@@ -35,23 +35,25 @@ class DeviceController {
             next(ApiError.badRequest(e.message))
         }
     }
+
     async getAll(req, res) {
         let {brandId, typeId, limit, page} = req.query
         page = page || 1
         limit = limit || 10
         let offset = page * limit - limit
         let devices
+        let query = {include: [{model: Brand, as: 'brand'}]}
         if (!brandId && !typeId) {
-            devices = await Device.findAndCountAll({limit, offset})
+            devices = await Device.findAndCountAll({...query, limit, offset})
         }
         if (brandId && !typeId) {
-            devices = await Device.findAndCountAll({where: {brandId}, limit, offset})
+            devices = await Device.findAndCountAll({...query, where: {brandId}, limit, offset})
         }
         if (!brandId && typeId) {
-            devices = await Device.findAndCountAll({where: {typeId}, limit, offset})
+            devices = await Device.findAndCountAll({...query, where: {typeId}, limit, offset})
         }
         if (brandId && typeId) {
-            devices = await Device.findAndCountAll({where: {brandId, typeId}, limit, offset})
+            devices = await Device.findAndCountAll({...query, where: {brandId, typeId}, limit, offset})
         }
         return res.json(devices)
     }

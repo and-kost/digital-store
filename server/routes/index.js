@@ -5,9 +5,9 @@ const typeRouter = require('./api/type/typeRouter')
 const brandRouter = require('./api/brand/brandRouter')
 const deviceRouter = require('./api/device/deviceRouter')
 
-router.use('/user', userRouter)
-router.use('/type', typeRouter)
-router.use('/brand', brandRouter)
-router.use('/device', deviceRouter)
+router.use('/users', userRouter)
+router.use('/types', typeRouter)
+router.use('/brands', brandRouter)
+router.use('/devices', deviceRouter)
 
 module.exports = router

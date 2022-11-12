@@ -9,7 +9,7 @@ const Device = () => {
     const {id} = useParams()
 
     useEffect(() => {
-        getDevice(id).then(device => setDevice(device))
+        getDevice(id.slice(1, id.length)).then(device => setDevice(device))
     }, [])
 
     return (
